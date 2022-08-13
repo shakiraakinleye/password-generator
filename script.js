@@ -155,10 +155,6 @@ function hideErrorAlert() {
 
 
 
-
-
-
-
 // EVENT HANDLERS
 lengthSlider.addEventListener("input", sliderHandler)
 generateBtn.addEventListener("click", generateBtnHandler)
@@ -166,3 +162,6 @@ copyBtn.addEventListener("click", copyBtnHandler)
 overlay.addEventListener("click", hideErrorAlert);
 closeOverlayBtn.addEventListener("click", hideErrorAlert)
 
+
+
+// ALLOW USERS ENTER THE LENGTH IN THE INPUT AREA AND SHOULD REFLECT IN THE SLIDER
