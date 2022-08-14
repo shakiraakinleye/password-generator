@@ -49,16 +49,46 @@ function getPasswordLength() {
 
 
 function validateUserChoices() {
-  if (checkBoxes.some((box) => box.checked) === false && lengthSlider.value < 6 ){
-    return { valid: false, error: "select a character group and a length of 6 or above!" };
+  if (
+    (checkBoxes.some((box) => box.checked) === false &&
+      lengthSlider.value < 6) ||
+    (checkBoxes.some((box) => box.checked) === false && lengthSlider.value > 20)
+  ) {
+    return {
+      valid: false,
+      error:
+        "select a character group and a password length between 6 and 20 charcaters!",
+    };
   }
 
-  if (checkBoxes.some((box) => box.checked) === false) {
-    return { valid: false, error: "no character group selected!" };
+  if (
+    (checkBoxes.some((box) => box.checked) === false &&
+      lengthInput.value < 6) ||
+    (checkBoxes.some((box) => box.checked) === false && lengthInput.value > 20)
+  ) {
+    return {
+      valid: false,
+      error:
+        "select a character group and a password length between 6 and 20 charcaters!",
+    };
   }
 
-  if (lengthSlider.value <= 6) {
-    return { valid: false, error: "can not generate a password of less than 6 characters!" };
+ if (checkBoxes.some((box) => box.checked) === false) {
+    return { valid: false, error: "select a character group!" };
+  }
+
+  if (lengthSlider.value < 6 || lengthSlider.value > 20) {
+    return {
+      valid: false,
+      error: "select a password length between 6 and 20 charcaters",
+    };
+  }
+
+  if (lengthInput.value < 6 || lengthInput.value > 20) {
+    return {
+      valid: false,
+      error: "select a password length between 6 and 20 charcaters",
+    };
   }
 
   return { valid: true, error: "" };
@@ -172,4 +202,14 @@ closeOverlayBtn.addEventListener("click", hideErrorAlert)
 
 
 
+  
+  
+  
+
+  
+  
+
+  
 // ALLOW USERS ENTER THE LENGTH IN THE INPUT AREA AND SHOULD REFLECT IN THE SLIDER
+
+((lengthSlider.value < 6 && lengthInput.value < 6) || (lengthSlider.value > 20 && lengthInput.value > 20))
