@@ -142,8 +142,10 @@ function copyBtnHandler() {
   if (copyBtnImage.getAttribute("src") === "images/copy-active.png") {
     navigator.clipboard.writeText(passwordDisplay.textContent);
     displayCopyAlert()
-    setTimeout(hideCopyAlert, 1000);
+    setTimeout(hideCopyAlert, 500);
+    return;
   }
+  displayErrorAlert("no password generated")
 }
 
 
