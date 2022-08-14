@@ -1,6 +1,6 @@
 // DSIPLAY SELECTION
 const passwordDisplay = document.querySelector(".js-password-display")
-const lengthDisplay = document.querySelector(".js-length-display")
+const lengthInput = document.querySelector(".js-length-input");
 const lengthSlider = document.querySelector(".js-length-slider")
 
 // CHECKBOX SELECTION
@@ -28,6 +28,7 @@ const numbersChar = "0123456789";
 const lowerCaseChar = "abcdefghijklmnopqrstuvwxyz".toLowerCase();
 const upperCaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toUpperCase();
 const symbolsChar = "~`! @#$%^&*()_-+={[}]|\\:;\"'<,>.?/"
+
 
 
 // FUNCTIONS
@@ -123,9 +124,13 @@ function displayErrorAlert(error) {
 
 // TO DISPLAY THE LENGTH VALUE SELECTED ON SLIDER
 function sliderHandler() {
-  lengthDisplay.textContent = lengthSlider.value;
+  lengthInput.value = lengthSlider.value;
 }
 
+
+function lengthInputHandler () {
+  lengthSlider.value = lengthInput.value;
+}
 
 function generateBtnHandler() {
   const { valid, error } = validateUserChoices();
@@ -159,6 +164,7 @@ function hideErrorAlert() {
 
 // EVENT HANDLERS
 lengthSlider.addEventListener("input", sliderHandler)
+lengthInput.addEventListener("input", lengthInputHandler);
 generateBtn.addEventListener("click", generateBtnHandler)
 copyBtn.addEventListener("click", copyBtnHandler)
 overlay.addEventListener("click", hideErrorAlert);
